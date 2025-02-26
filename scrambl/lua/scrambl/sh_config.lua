@@ -2,6 +2,7 @@ scrambl.cfg = {
 	guess_time = 45,
 	cooldown = 600,
 	prefix = "[Scrambl]: ",
+	prefix_color = Color( 100, 200, 100 ),
 	msg = [[You have %s seconds to unscramble "%s"]],
 	case_sensitive_guesses = true,
 	word_randomizer = {
