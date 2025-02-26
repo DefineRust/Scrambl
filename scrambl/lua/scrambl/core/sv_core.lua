@@ -61,7 +61,7 @@ function scrambl.StartRound( word )
 		return;
 	end
 
-	scrambl.AddText( scrambl.cfg.msg:format( scrambl.cfg.guess_time, scrambl.ScrambleWord( word ) ) )
+	scrambl.AddText( scrambl.cfg.msg:format( scrambl.cfg.guess_time, scrambl.ScrambleWord( word ) ), true )
 	scrambl.round_active = true
 
 	timer.Simple( scrambl.cfg.guess_time, function()
@@ -74,7 +74,7 @@ end
 function scrambl.RewardPlayer( ply, amount )
 
 	ply:addMoney( amount )
-	scrambl.AddText( [[Well done, the word was "]] .. scrambl.recent_random .. [["! You have been rewarded ]] .. DarkRP.formatMoney( amount ), false, ply )
+	scrambl.AddText( [[Well done, the word was "]] .. scrambl.recent_random .. [["! You have been rewarded ]] .. DarkRP.formatMoney( amount ), false, false, ply )
 
 end
 
@@ -94,7 +94,7 @@ function scrambl.EndRound( ply )
 	local randomized_reward = math.random( reward.base - reward.fluctuation, reward.base + reward.fluctuation )
 
 	scrambl.RewardPlayer( ply, randomized_reward )
-	scrambl.AddText( ply:Nick() .. [[ has won this round of Scrambl! The word was "]] .. ( scrambl.recent_random or "[Hidden]" ) .. [[". They won ]] .. DarkRP.formatMoney( randomized_reward ), ply )
+	scrambl.AddText( ply:Nick() .. [[ has won this round of Scrambl! The word was "]] .. ( scrambl.recent_random or "[Hidden]" ) .. [[". They won ]] .. DarkRP.formatMoney( randomized_reward ), false, ply )
 
 end
 
@@ -113,7 +113,7 @@ function scrambl.PlayerSay( ply, txt )
 
 		if scrambl.cfg.case_sensitive_guesses then
 
-            scrambl.AddText( "Pssst; guesses are case-sensitive!", false, ply )
+            scrambl.AddText( "Pssst; guesses are case-sensitive!", false, false, ply )
 
 		else
 
