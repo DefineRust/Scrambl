@@ -15,7 +15,10 @@ function scrambl.GenerateRandomWord( len, callback )
    
 	http.Fetch( "https://random-word-api.herokuapp.com/word?length="..len, function( body )
 
-		local word = util.JSONToTable( body )[1]:NiceName()
+		if not body then return; end
+
+		local list = util.JSONToTable( body )
+		local word = list[1]:NiceName()
 
 		scrambl.recent_random = word
 		if callback then
