@@ -1,2 +1,2 @@
 # Scrambl
-The simplest word scrambling chat puzzle game for Garry's Mod!
+The simplest word-scrambling chat-based puzzle game for Garry's Mod!
