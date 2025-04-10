@@ -18,6 +18,8 @@ function scrambl.GenerateRandomWord( len, callback )
 		if not body then scrambl.GenerateRandomWord( len, callback ) return; end
 
 		local list = util.JSONToTable( body )
+		if not list then scrambl.GenerateRandomWord( len, callback ) return; end
+
 		local word = list[1]:NiceName()
 
 		scrambl.recent_random = word
@@ -50,9 +52,7 @@ local rand = scrambl.cfg.word_randomizer
 function scrambl.StartCooldown()
 
 	timer.Simple( scrambl.cfg.cooldown, function()
-		scrambl.GenerateRandomWord( math.random( rand.min_len, rand.max_len ), function( word )
-			scrambl.StartRound( word )
-		end)
+		scrambl.GenerateRandomWord( math.random( rand.min_len, rand.max_len ), scrambl.StartRound )
 	end)
 
 end
