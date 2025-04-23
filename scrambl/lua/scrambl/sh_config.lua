@@ -17,4 +17,8 @@ scrambl.cfg = {
 	word_list = {
 
 	},
+
+	reward = function( ply, amount )
+		ply:addMoney( amount )
+	end,
 }
