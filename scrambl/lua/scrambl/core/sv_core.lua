@@ -76,7 +76,7 @@ end
 
 function scrambl.RewardPlayer( ply, amount )
 
-	scrambl.cfg.reward( ply, amount )
+	scrambl.cfg.fn_reward( ply, amount )
 	scrambl.AddText( [[Well done, the word was "]] .. scrambl.recent_random .. [["! You have been rewarded ]] .. DarkRP.formatMoney( amount ), false, false, ply )
 
 end
