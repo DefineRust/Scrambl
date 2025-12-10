@@ -18,7 +18,7 @@ scrambl.cfg = {
 
 	},
 
-	reward = function( ply, amount )
+	fn_reward = function( ply, amount )
 		ply:addMoney( amount )
 	end,
 }
